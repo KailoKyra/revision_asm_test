@@ -1,0 +1,52 @@
+test:
+		LD IX, _worm1
+		call draw_sprite
+
+	;; slow down
+	call delay_anim
+	LD IX, _worm2
+	call draw_sprite
+
+	call delay_anim
+	LD IX, _worm3
+	call draw_sprite
+
+	call delay_anim
+	LD IX, _worm4
+	call draw_sprite
+	
+	
+	call delay_anim
+	LD IX, _worm3
+	call draw_sprite
+
+	call delay_anim
+	LD IX, _worm2
+	call draw_sprite
+	call delay_anim
+
+	call clear_sprite
+			;sinc (IX)
+				;inc (IX + 1)
+	
+
+
+	jp test
+
+
+
+delay_anim:
+	ld BC, 0x7FFF
+	ld A, #0
+_delay_loop:
+	dec C
+	cp C
+	jp nz, _delay_loop
+_delay_loop_2:
+	ld C, 0xFF
+	dec B
+	cp B
+	jp nz, _delay_loop
+	ret
+	
+	
